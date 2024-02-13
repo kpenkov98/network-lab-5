@@ -45,17 +45,19 @@ public class TCPServer {
           //read in from client
           clientSentence = inFromClient.readLine();
           //search for the word
-          while (words.contains(clientSentence)) {
-            matchedWords.add(clientSentence);
+          for (String word : words) {
+            if (word.contains(clientSentence)) {
+              matchedWords.add(word);
+            }
           }
 
           if (!matchedWords.isEmpty()) {
             clientResponse =
-              "List of matched words: \n" + String.join("\n", matchedWords);
+              "List of matched words: " + String.join(", ", matchedWords);
           } else clientResponse = "No words were found";
           //capitalizedSentence = clientSentence.toUpperCase() + '\n';
 
-          outToClient.writeBytes(clientResponse);
+          outToClient.writeBytes(clientResponse + '\n');
         }
       } catch (Exception e) {
         // TODO: handle exception, if client closed connection, print:

@@ -35,7 +35,7 @@ public class TCPClient {
 
       modifiedSentence = inFromServer.readLine();
 
-      System.out.println("FROM SERVER: " + modifiedSentence);
+      System.out.println("Server Reply: " + modifiedSentence);
       sentence = inFromUser.readLine();
     }
 
